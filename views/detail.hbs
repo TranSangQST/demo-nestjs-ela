@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f2f2f2;
+            font-family: "Helvetica", sans-serif;
+        }
+
+        .container {
+            background-color: white;
+            max-width: 1000px;
+            margin: 100px auto;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+        .action {
+            display: flex;
+            justify-content: space-between;
+
+        }
+
+
+        .back-button {
+            background-color: #0c2461;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        .save-button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <form action="/{{ data._id }}/update" method="post">
+            <label for="title">Tiêu đề:</label>
+            <textarea id="title" name="title" rows="2"
+                placeholder="Enter title here...">{{ data._source.title }}</textarea>
+
+            <label for="content">Nội dung:</label>
+            <textarea id="content" name="content" rows="10"
+                placeholder="Enter content here...">{{ data._source.content }}</textarea>
+
+            <div class="action">
+                <a href="/" class="back-button">Trang chủ</a>
+                <button type="submit" class="save-button">Lưu</button>
+            </div>
+        </form>
+
+
+
+    </div>
+</body>
+
+</html>
